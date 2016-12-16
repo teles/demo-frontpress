@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="demo-frontpress-app" data-ng-controller="DemoFrontPressController as vc">
+	<head page-head>
+	    <meta name="fragment" content="!">
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <script type="text/javascript" src="https://rawgit.com/frontpressorg/frontpress/master/release/frontpress.min.js"></script>
+        <script type="text/javascript">        	
+		// file generated using ngConfig
+
+		angular.module("frontpress.components.frontpress-provider")
+		.constant("FrontPressConfigurationFile", {
+		    "restApiUrl": "https://www.vivadecora.com.br/revista/wp-json",
+		    "apiVersion": "v2",
+		    "pageSize": 5,
+		    "infiniteScroll": true,
+		    "routes": {
+		        "post": "/:postYear/:postMonth/:postDay/:postId",
+		        "home.pagination": "/pagina/:pageNumber"
+		    },
+		    "titles": {
+		        "post": ":postTitle - :siteName",
+		        "home": "Home - :siteName"
+		    },
+		    "overrides": {
+		        "siteName": "FrontPress Default Template"
+		    }
+		});
+
+		angular.module("demo-frontpress-app", ["frontpress"]);
+		angular.module("demo-frontpress-app").controller("DemoFrontPressController", DemoFrontPressController);
+		angular.module("demo-frontpress-app").config(DemoFrontPressConfig);
+
+		function DemoFrontPressController(){
+			var vc = this;
+		}
+
+		function DemoFrontPressConfig($FrontPressProvider){
+			$FrontPressProvider.configure.load();
+		}
+
+        </script>
+	</head>
+	<body>
+		<ui-view></ui-view>
+	</body>
+</html>
