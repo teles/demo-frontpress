@@ -5,7 +5,7 @@ angular.module("frontpress.components.frontpress-provider")
     "pageSize": 5,
     "infiniteScroll": true,
     "routes": {
-        "post": "/:postYear/:postMonth/:postDay/:postId",
+        "post": "/:postSlug",
         "home.pagination": "/pagina/:pageNumber"
     },
     "titles": {
