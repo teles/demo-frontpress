@@ -6,6 +6,7 @@ function DemoFrontPressController(){
 	var vc = this;
 }
 
-function DemoFrontPressConfig($FrontPressProvider){
+function DemoFrontPressConfig($FrontPressProvider, $qProvider){
 	$FrontPressProvider.configure.load();
+	$qProvider.errorOnUnhandledRejections(false);
 }
