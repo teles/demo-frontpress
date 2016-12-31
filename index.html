@@ -7,8 +7,44 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.min.js"></script>
         <script type="text/javascript" src="https://rawgit.com/frontpressorg/frontpress/master/release/frontpress.min.js"></script>
-        <script type="text/javascript" src="https://rawgit.com/teles/demo-frontpress/master/js/demo-frontpress-vivadecora.js"></script>
-        <script type="text/javascript" src="https://rawgit.com/teles/demo-frontpress/master/js/frontpress-config.constant.js"></script>
+        <script type="text/javascript">
+			
+			angular.module("demo-frontpress-app", ["frontpress"]);
+			angular.module("demo-frontpress-app").controller("DemoFrontPressController", DemoFrontPressController);
+
+			angular.module("demo-frontpress-app").config(DemoFrontPressConfig);
+
+			function DemoFrontPressController(){
+				var vc = this;
+			}
+
+			function DemoFrontPressConfig($FrontPressProvider, $qProvider){
+				$qProvider.errorOnUnhandledRejections(false);
+				var myBlogRestApiUrl = "https://www.vivadecora.com.br/revista/wp-json"
+
+				var demoBlogConfiguration = {
+				    "restApiUrl": myBlogRestApiUrl,
+				    "apiVersion": "v2",
+				    "pageSize": 5,
+				    "infiniteScroll": true,
+				    "routes": {
+				        "post": "/:postSlug",
+				        "home.pagination": "/pagina/:pageNumber"
+				    },
+				    "titles": {
+				        "post": ":postTitle - :siteName",
+				        "home": ":siteName - Bem Vindo"
+				    },
+				    "overrides": {
+				        "siteName": "FrontPress Viva Decora Demo SPA"
+				    }
+				};
+				
+				$FrontPressProvider.configure.load(demoBlogConfiguration);
+
+			}        	
+        </script>
+
 	</head>
 	<body>
 		<ui-view></ui-view>
