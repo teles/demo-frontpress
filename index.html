@@ -6,9 +6,9 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.min.js"></script>
-        <script type="text/javascript" src="https://rawgit.com/frontpressorg/frontpress/master/release/frontpress.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/frontpressorg/frontpress/117_bulma/release/frontpress.min.js"></script>
         <script type="text/javascript">
-			
+
 			angular.module("demo-frontpress-app", ["frontpress"]);
 			angular.module("demo-frontpress-app").controller("DemoFrontPressController", DemoFrontPressController);
 
@@ -20,7 +20,8 @@
 
 			function DemoFrontPressConfig($FrontPressProvider, $qProvider){
 				$qProvider.errorOnUnhandledRejections(false);
-				var myBlogRestApiUrl = "https://www.vivadecora.com.br/revista/wp-json"
+
+				var myBlogRestApiUrl = prompt("Please enter your wordpress rest api url", "https://www.vivadecora.com.br/revista/wp-json");
 
 				var demoBlogConfiguration = {
 				    "restApiUrl": myBlogRestApiUrl,
@@ -39,10 +40,10 @@
 				        "siteName": "FrontPress Viva Decora Demo SPA"
 				    }
 				};
-				
+
 				$FrontPressProvider.configure.load(demoBlogConfiguration);
 
-			}        	
+			}
         </script>
 
 	</head>
